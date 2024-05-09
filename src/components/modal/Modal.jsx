@@ -15,7 +15,7 @@ function Modal({closePopup}) {
   const [isFormValid, setIsFormValid] = useState(false);
   const [personTypes] = useState(["Фіз.особа", "Юр.особа"]);
   const [activePerson, setActivePerson] = useState(0);
-  // const [inputs, setInputs] = useState(initialPersonState);
+
   const [helpOptions] = useState([
     {helpText: "Зробити", helpIcon: "hand-icon"},
     {helpText: "Фінансова допомога", helpIcon: "wallet-icon"},
@@ -43,7 +43,7 @@ function Modal({closePopup}) {
   const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
-     console.log("Form validity updated to:", isFormValid);
+
     setIsDisabled(!isFormValid);
   }, [isFormValid]);
 
@@ -55,10 +55,7 @@ function Modal({closePopup}) {
     setActivePerson(personIndex);
   };
 
-  // const onInputChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setInputs({ ...inputs, [name]: value });
-  // };
+
 
   const onFormSubmit = () => {
     setIsDisabled(false);

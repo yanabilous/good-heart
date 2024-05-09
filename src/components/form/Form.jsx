@@ -7,19 +7,15 @@ function Form({setFormData, setIsFormValid}) {
     control,
     handleSubmit,
     getValues,
-    formState: {errors, isValid}
+    formState: {errors, isValid, isDirty, }
 
-  } = useForm();
+  } = useForm({mode: "onChange"});
   // eslint-disable-next-line no-unused-vars
   // const [emailError, setEmailError] = useState("");
   useEffect(() => {
-
-    console.log("Form:",isValid);
-
     setFormData(getValues());
-    setIsFormValid(isValid);
-
-  }, [getValues, setFormData, setIsFormValid, isValid]);
+    setIsFormValid(isValid && isDirty);
+  }, [getValues, setFormData, setIsFormValid, isValid, isDirty]);
 
 
 
@@ -52,7 +48,8 @@ function Form({setFormData, setIsFormValid}) {
                   pattern: {
                     value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]+$/,
                     message: "Ім'я повинно містити лише букви."
-                  }
+                  },
+                  required: "Обовʼязкове поле"
                 }}
                 render={({field}) => (
                   <input
@@ -76,13 +73,12 @@ function Form({setFormData, setIsFormValid}) {
                 defaultValue=""
                 render={({field}) => (
                   <input
+                    {...field}
                     className="input"
                     type="text"
                     // placeholder="Last name"
                     id="lastName"
                     onChange={field.onChange}
-                    value={field.value}
-                    {...field}
                     required
                   />
                 )}
@@ -91,7 +87,8 @@ function Form({setFormData, setIsFormValid}) {
                     value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]+$/,
                     message:
                       "Last name should contain at least 2 letters and no other characters."
-                  }
+                  },
+                  required: "Обовʼязкове поле"
                 }}
               />
               {errors.lastName && <span>{errors.lastName.message}</span>}
@@ -120,7 +117,8 @@ function Form({setFormData, setIsFormValid}) {
                   value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]{2,}$/,
                   message:
                     "Last name should contain at least 2 letters and no other characters."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
             />
             {errors.companyName && <span>{errors.companyName.message}</span>}
@@ -161,7 +159,8 @@ function Form({setFormData, setIsFormValid}) {
                 pattern: {
                   value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/,
                   message: "That is not a valid email."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
             />
           </div>
@@ -187,7 +186,8 @@ function Form({setFormData, setIsFormValid}) {
                 pattern: {
                   value: /^\+[0-9]{12}$/,
                   message: "Це не є дійсним номером телефону. Будь ласка, включіть '+' і 12 цифр."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
             />
             {errors.telephone && <p>{errors.telephone.message}</p>}
@@ -207,7 +207,8 @@ function Form({setFormData, setIsFormValid}) {
                 pattern: {
                   value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z\s]{2,}$/,
                   message: "Країна повинна містити щонайменше 2 символи та може включати пробіли."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
               render={({field}) => (
                 <input
@@ -245,7 +246,8 @@ function Form({setFormData, setIsFormValid}) {
                   pattern: {
                     value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]{2,}$/,
                     message: "Місто повинно містити щонайменше 2 літери."
-                  }
+                  },
+                   required: "Обовʼязкове поле"
                 }}
               />
               {errors.city && <span>{errors.city.message}</span>}
@@ -271,7 +273,8 @@ function Form({setFormData, setIsFormValid}) {
                   pattern: {
                     value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z\s]{2,}$/,
                     message: "Штат повинно містити щонайменше 2 символи та може включати пробіли."
-                  }
+                  },
+                   required: "Обовʼязкове поле"
                 }}
               />
               {errors.state && <span>{errors.state.message}</span>}
@@ -302,7 +305,8 @@ function Form({setFormData, setIsFormValid}) {
                 pattern: {
                   value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z0-9\s]{2,}$/,
                   message: "Адреса повинна містити щонайменше 2 символи та може включати пробіли."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
             />
           </div>
@@ -315,7 +319,8 @@ function Form({setFormData, setIsFormValid}) {
               rules={{
                 pattern: {
                   message: "Поштовий індекс має містити щонайменше 2 цифри."
-                }
+                },
+                 required: "Обовʼязкове поле"
               }}
               render={({field}) => (
                 <input
@@ -333,13 +338,6 @@ function Form({setFormData, setIsFormValid}) {
           </div>
         </div>
 
-
-        {/*<Button*/}
-        {/*  buttonClick={onSubmitForm}*/}
-        {/*  primaryBtnText={primaryBtnText}*/}
-        {/*  disabled={false}*/}
-        {/*  type="submit"*/}
-        {/*/>*/}
 
 
       </form>

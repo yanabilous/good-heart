@@ -1,4 +1,4 @@
-import "../../styles/paymentAnotherCard.css";
+
 
 function PaymentAnotherCard() {
   return (

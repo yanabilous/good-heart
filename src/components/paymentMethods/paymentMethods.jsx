@@ -1,4 +1,4 @@
-import "../../styles/paymentMethods.css";
+
 import PaymentMethod from "../paymentMethod/paymentMethod";
 
 

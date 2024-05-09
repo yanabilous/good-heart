@@ -3,9 +3,7 @@ import "../../styles/financialHelp.css";
 import PaymentMethods from "../paymentMethods/paymentMethods";
 import PaymentAnotherCard from "../paymentAnotherCard/paymentAnotherCard";
 import PaymentCreditCard from "../paymentCreditCard/paymentCreditCard";
-// import PaymentMethods from "../payment-methods/paymentMethods";
-// import PaymentCreditCard from "../payment-credit-card/paymentCreditCard";
-// import PaymentAnotherCard from "../payment-another-card/paymentAnotherCard";
+
 
 function FinancialHelp ({paymentMethods, activeMethod, financialHelpClick, creditCard, onInputCardChange, onInputCardKeyUp }) {
     return(
