@@ -20,7 +20,7 @@ function Form({setIsFormValid, setFormData}) {
     setFormData(getValues());
     setIsFormValid(isValid);
 
-  }, [isValid]);
+  }, [getValues, setFormData, setIsFormValid, isValid]);
 
 
   const onSubmitForm = (data) => {
