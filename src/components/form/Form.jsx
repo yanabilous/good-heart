@@ -4,7 +4,7 @@ import {Controller, useForm} from "react-hook-form";
 
 
 
-function Form({setIsFormValid, setFormData}) {
+function Form({ setFormData}) {
   // const primaryBtnText = "Допомогти";
   const {
     control,
@@ -18,9 +18,10 @@ function Form({setIsFormValid, setFormData}) {
   useEffect(() => {
     // console.log(isValid);
     setFormData(getValues());
-    setIsFormValid(isValid);
+    // setIsFormValid(isValid);
 
-  }, [getValues, setFormData, setIsFormValid, isValid]);
+  // }, [getValues, setFormData, setIsFormValid, isValid]);
+  }, [getValues, setFormData, isValid]);
 
 
   const onSubmitForm = (data) => {

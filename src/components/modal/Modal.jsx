@@ -12,7 +12,7 @@ import PopupClose from "../btnClose/BtnClose";
 
 function Modal({closePopup}) {
   const [formData, setFormData] = useState({});
-  const [ setIsFormValid] = useState(false);
+  // const [isFormValid, setIsFormValid] = useState(false);
   const [personTypes] = useState(["Фіз.особа", "Юр.особа"]);
   const [activePerson, setActivePerson] = useState(0);
   // const [inputs, setInputs] = useState(initialPersonState);
@@ -124,7 +124,7 @@ function Modal({closePopup}) {
           />
           {activePerson === 0
             ? <Individual
-              setIsFormValid={setIsFormValid}
+              // setIsFormValid={setIsFormValid}
               setFormData={setFormData}
             />
             : <LegalEntity/>
