@@ -1,0 +1,105 @@
+.form {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    /*margin: 0 100px 0 0;*/
+
+}
+
+.flex-left {
+    margin-right: 100px;
+
+}
+
+.flex-right {
+    margin-left: 100px;
+}
+
+.mr-left {
+    margin-left: 15px;
+}
+
+.w-h {
+    width: 50%;
+}
+
+.row {
+    display: flex;
+}
+
+.row-p {
+    position: relative;
+
+}
+
+.input_logo {
+    position: absolute;
+    top: 25px;
+    right: -70px;
+}
+
+.input_logo button {
+    font-family: "Geometria", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #79b5f1;
+    background: none;
+}
+
+.label {
+    display: block;
+    padding-bottom: 1px;
+}
+
+.input_area {
+    margin-bottom: 25px;
+}
+
+.input_area p {
+    color: #989fa7;
+    font-family: "Geometria", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.input {
+    background: #f3f7fa;
+    border: 1px solid #f3f7fa;
+    border-radius: 4px;
+    color: #363b5d;
+    height: 31px;
+    padding: 0 10px;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .form {
+        flex-direction: column;
+    }
+
+    .flex-left {
+        margin-right: 0;
+
+    }
+
+    .flex-right {
+        margin-left: 0;
+    }
+
+    .row-p {
+        position: relative;
+
+    }
+
+    .input_logo {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+}

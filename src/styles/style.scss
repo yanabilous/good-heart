@@ -1,0 +1,29 @@
+@import "_reset.css";
+@import "_fonts.css";
+@import "home.css";
+@import "button.css";
+@import "modal.css";
+@import "itemPersone.css";
+@import "togglePerson.css";
+@import "form.css";
+@import "individual.css";
+@import "helpOptions.css";
+@import "financialHelp.css";
+@import "paymentMethods.css";
+@import "paymentAnotherCard.css";
+@import "paymentCreditCard.css";
+@import "helpOptionItem.css";
+@import "paymentMethod.css";
+@import "popupClose.css";
+@import "legalEntity.css";
+
+
+section {
+  width: 100vh;
+}
+
+@media screen and (max-width: 900px) {
+  section {
+    width: 100%;
+  }
+}
