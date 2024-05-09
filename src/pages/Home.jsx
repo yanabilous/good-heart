@@ -3,7 +3,7 @@ import Button from "../components/button/Button";
 import Modal from "../components/modal/Modal";
 
 function Home() {
-  const primaryBtnText = "Відкрити форму";
+  const primaryBtnText = "Our form";
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {

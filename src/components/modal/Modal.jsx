@@ -1,4 +1,4 @@
-import { useState} from "react";
+import {useEffect, useState} from "react";
 import TogglePerson from "../togglePerson/TogglePerson";
 import Individual from "../individual/Individual";
 import LegalEntity from "../legalEntity/LegalEntity";
@@ -12,7 +12,7 @@ import PopupClose from "../btnClose/BtnClose";
 
 function Modal({closePopup}) {
   const [formData, setFormData] = useState({});
-  // const [isFormValid, setIsFormValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [personTypes] = useState(["Фіз.особа", "Юр.особа"]);
   const [activePerson, setActivePerson] = useState(0);
   // const [inputs, setInputs] = useState(initialPersonState);
@@ -40,7 +40,12 @@ function Modal({closePopup}) {
     cardCvv: ""
   });
   const [primaryBtnText] = useState("Допомогти");
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+     console.log("Form validity updated to:", isFormValid);
+    setIsDisabled(!isFormValid);
+  }, [isFormValid]);
 
   const helpOptionClick = (optionIndex) => {
     setActiveOption(optionIndex);
@@ -56,18 +61,19 @@ function Modal({closePopup}) {
   // };
 
   const onFormSubmit = () => {
-    setIsDisabled(true);
+    setIsDisabled(false);
     console.log(formData);
     console.log(creditCard);
 
     alert("Form is submitted!");
-    resetForm();
+    // resetForm();
   };
+  // const resetForm = () => {
+  //   // setInputs(initialPersonState);
+  //   setIsDisabled(false);
+  // };
 
-  const resetForm = () => {
-    // setInputs(initialPersonState);
-    setIsDisabled(false);
-  };
+
 
   const displayHelpContent = () => {
     switch (activeOption) {
@@ -112,41 +118,41 @@ function Modal({closePopup}) {
 
   return (
     // <div className="popup-overlay">
-      <div className="popup">
-         <PopupClose closePopup={closePopup}/>
+    <div className="popup">
+      <PopupClose closePopup={closePopup}/>
 
-        <div className="popup-container">
-          <h2 className="tittle">Заповніть форму</h2>
-          <TogglePerson
-            personTypes={personTypes}
-            activePerson={activePerson}
-            personTypeClick={personTypeClick}
+      <div className="popup-container">
+        <h2 className="tittle">Заповніть форму</h2>
+        <TogglePerson
+          personTypes={personTypes}
+          activePerson={activePerson}
+          personTypeClick={personTypeClick}
+        />
+        {activePerson === 0
+          ? <Individual
+            setIsFormValid={setIsFormValid}
+            setFormData={setFormData}
           />
-          {activePerson === 0
-            ? <Individual
-              // setIsFormValid={setIsFormValid}
-              setFormData={setFormData}
-            />
-            : <LegalEntity/>
-          }
-          <h2>Види допомоги</h2>
-          <p className="subtitle">Ви можете змінити вид допомоги</p>
-          <HelpOptions
-            helpOptions={helpOptions}
-            activeOption={activeOption}
-            helpOptionClick={helpOptionClick}
-          />
-          <div className="help-content">
-            {displayHelpContent()}
-          </div>
-          <Button
-            primaryBtnText={primaryBtnText}
-            buttonClick={onFormSubmit}
-            disabled={isDisabled}
-          />
+          : <LegalEntity/>
+        }
+        <h2>Види допомоги</h2>
+        <p className="subtitle">Ви можете змінити вид допомоги</p>
+        <HelpOptions
+          helpOptions={helpOptions}
+          activeOption={activeOption}
+          helpOptionClick={helpOptionClick}
+        />
+        <div className="help-content">
+          {displayHelpContent()}
         </div>
-
+        <Button
+          primaryBtnText={primaryBtnText}
+          buttonClick={onFormSubmit}
+          disabled={isDisabled}
+        />
       </div>
+
+    </div>
     // </div>
   );
 }

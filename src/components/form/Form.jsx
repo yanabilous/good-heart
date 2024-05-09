@@ -1,11 +1,8 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import {Controller, useForm} from "react-hook-form";
 
 
-
-
-function Form({ setFormData}) {
-  // const primaryBtnText = "Допомогти";
+function Form({setFormData, setIsFormValid}) {
   const {
     control,
     handleSubmit,
@@ -14,14 +11,16 @@ function Form({ setFormData}) {
 
   } = useForm();
   // eslint-disable-next-line no-unused-vars
-  const [emailError, setEmailError] = useState("");
+  // const [emailError, setEmailError] = useState("");
   useEffect(() => {
-    // console.log(isValid);
-    setFormData(getValues());
-    // setIsFormValid(isValid);
 
-  // }, [getValues, setFormData, setIsFormValid, isValid]);
-  }, [getValues, setFormData, isValid]);
+    console.log("Form:",isValid);
+
+    setFormData(getValues());
+    setIsFormValid(isValid);
+
+  }, [getValues, setFormData, setIsFormValid, isValid]);
+
 
 
   const onSubmitForm = (data) => {
@@ -59,7 +58,6 @@ function Form({ setFormData}) {
                   <input
                     className="input"
                     type="text"
-                    // placeholder="First name"
                     id="firstName"
                     {...field}
                     onChange={field.onChange}
@@ -207,8 +205,8 @@ function Form({ setFormData}) {
               defaultValue=""
               rules={{
                 pattern: {
-                  value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]+$/,
-                  message: "Країна повинна містити лише букви"
+                  value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z\s]{2,}$/,
+                  message: "Країна повинна містити щонайменше 2 символи та може включати пробіли."
                 }
               }}
               render={({field}) => (
@@ -245,9 +243,8 @@ function Form({ setFormData}) {
                 )}
                 rules={{
                   pattern: {
-                    value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]+$/,
-                    message:
-                      "Last name should contain at least 2 letters and no other characters."
+                    value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]{2,}$/,
+                    message: "Місто повинно містити щонайменше 2 літери."
                   }
                 }}
               />
@@ -263,7 +260,6 @@ function Form({ setFormData}) {
                   <input
                     className="input"
                     type="text"
-                    // placeholder="Last name"
                     id="state"
                     {...field}
                     onChange={field.onChange}
@@ -273,9 +269,8 @@ function Form({ setFormData}) {
                 )}
                 rules={{
                   pattern: {
-                   value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]+$/,
-                    message:
-                      "Last name should contain at least 2 letters and no other characters."
+                    value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z\s]{2,}$/,
+                    message: "Штат повинно містити щонайменше 2 символи та може включати пробіли."
                   }
                 }}
               />
@@ -305,9 +300,8 @@ function Form({ setFormData}) {
               )}
               rules={{
                 pattern: {
-                   value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]{2,}$/,
-                  message:
-                    "Address should contain at least 2 letters and no other characters."
+                  value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z0-9\s]{2,}$/,
+                  message: "Адреса повинна містити щонайменше 2 символи та може включати пробіли."
                 }
               }}
             />
@@ -319,22 +313,19 @@ function Form({ setFormData}) {
               control={control}
               defaultValue=""
               rules={{
-            pattern: {
-              value: /^[А-Яа-яЁёІіЇїЄєҐґa-zA-Z]{2,}$/,
-              message: "Поштовий індекс має містити щонайменше 2 цифри."
-            }
-          }}
+                pattern: {
+                  message: "Поштовий індекс має містити щонайменше 2 цифри."
+                }
+              }}
               render={({field}) => (
                 <input
                   className="input"
                   type="text"
-                  // placeholder="Telephone"
                   id="postIndex"
                   onChange={field.onChange}
                   value={field.value}
                   {...field}
                   required
-
                 />
               )}
             />
