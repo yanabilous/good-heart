@@ -12,8 +12,8 @@ import PopupClose from "../btnClose/BtnClose";
 
 function Modal({closePopup}) {
   const [formData, setFormData] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [personTypes, setPersonTypes] = useState(["Фіз.особа", "Юр.особа"]);
+  const [ setIsFormValid] = useState(false);
+  const [personTypes] = useState(["Фіз.особа", "Юр.особа"]);
   const [activePerson, setActivePerson] = useState(0);
   // const [inputs, setInputs] = useState(initialPersonState);
   const [helpOptions] = useState([
