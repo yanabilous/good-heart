@@ -9,6 +9,7 @@
 
 }
 .wrapper{
+    position: relative;
     height: 100vh;
     background-color: #363b5d;
 }

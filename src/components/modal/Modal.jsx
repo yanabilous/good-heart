@@ -56,7 +56,6 @@ function Modal({closePopup}) {
   };
 
 
-
   const onFormSubmit = () => {
     setIsDisabled(false);
     console.log(formData);
@@ -69,7 +68,6 @@ function Modal({closePopup}) {
   //   // setInputs(initialPersonState);
   //   setIsDisabled(false);
   // };
-
 
 
   const displayHelpContent = () => {
@@ -114,43 +112,43 @@ function Modal({closePopup}) {
 
 
   return (
-    // <div className="popup-overlay">
-    <div className="popup">
-      <PopupClose closePopup={closePopup}/>
+    <div className="popup-overlay">
+      <div className="popup">
+        <PopupClose closePopup={closePopup}/>
 
-      <div className="popup-container">
-        <h2 className="tittle">Заповніть форму</h2>
-        <TogglePerson
-          personTypes={personTypes}
-          activePerson={activePerson}
-          personTypeClick={personTypeClick}
-        />
-        {activePerson === 0
-          ? <Individual
-            setIsFormValid={setIsFormValid}
-            setFormData={setFormData}
+        <div className="popup-container">
+          <h2 className="tittle">Заповніть форму</h2>
+          <TogglePerson
+            personTypes={personTypes}
+            activePerson={activePerson}
+            personTypeClick={personTypeClick}
           />
-          : <LegalEntity/>
-        }
-        <h2>Види допомоги</h2>
-        <p className="subtitle">Ви можете змінити вид допомоги</p>
-        <HelpOptions
-          helpOptions={helpOptions}
-          activeOption={activeOption}
-          helpOptionClick={helpOptionClick}
-        />
-        <div className="help-content">
-          {displayHelpContent()}
+          {activePerson === 0
+            ? <Individual
+              setIsFormValid={setIsFormValid}
+              setFormData={setFormData}
+            />
+            : <LegalEntity/>
+          }
+          <h2>Види допомоги</h2>
+          <p className="subtitle">Ви можете змінити вид допомоги</p>
+          <HelpOptions
+            helpOptions={helpOptions}
+            activeOption={activeOption}
+            helpOptionClick={helpOptionClick}
+          />
+          <div className="help-content">
+            {displayHelpContent()}
+          </div>
+          <Button
+            primaryBtnText={primaryBtnText}
+            buttonClick={onFormSubmit}
+            disabled={isDisabled}
+          />
         </div>
-        <Button
-          primaryBtnText={primaryBtnText}
-          buttonClick={onFormSubmit}
-          disabled={isDisabled}
-        />
-      </div>
 
+      </div>
     </div>
-    // </div>
   );
 }
 
